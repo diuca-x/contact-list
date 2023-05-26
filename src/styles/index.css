@@ -1,3 +1,32 @@
-/* 
-    General Styles
-*/
+.navbar_container {
+  display: flex;
+  justify-content: end;
+  padding-right: 1%;
+}
+
+.contact_img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}
+
+.contact_info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
