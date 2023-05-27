@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 const Contact = (props) => {
   const { contact_info } = props;
@@ -31,7 +32,9 @@ const Contact = (props) => {
           </p>
         </div>
         <div className="col-3  d-flex contact_delpen">
+          <Link to={`/add/${contact_info.id}`}>
           <i className="fas fa-pencil-alt mx-5"></i>
+          </Link>
           <i className="fas fa-trash " onClick={() => {actions.contact_deletinator(contact_info.id)}}></i>
         </div>
       </div>

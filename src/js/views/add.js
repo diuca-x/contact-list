@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const Add = () => {
   const { store, actions } = useContext(Context);
+  const params = useParams();
 
   const [info, setInfo] = useState({});
-  
+
   const contact_setinator = (event) => {
     setInfo({ ...info, [event.target.id]: event.target.value });
-    console.log(info)
+    console.log(info);
   };
 
   return (
@@ -19,7 +20,11 @@ const Add = () => {
           className="my-5"
           onSubmit={(event) => {
             event.preventDefault();
-            actions.contact_adinator(info);
+            if (params.id != 0) {
+              actions.contact_updatinator(params.id, info);
+            } else {
+              actions.contact_adinator(info);
+            }
           }}
         >
           <div className="mb-3">
@@ -32,8 +37,8 @@ const Add = () => {
               id="full_name"
               aria-describedby="namelHelp"
               placeholder="Full Name"
+              required
               onChange={contact_setinator}
-              
             />
           </div>
           <div className="mb-3">
@@ -46,6 +51,7 @@ const Add = () => {
               id="email"
               aria-describedby="emailHelp"
               placeholder="Enter email"
+              required
               onChange={contact_setinator}
             />
           </div>
@@ -58,6 +64,7 @@ const Add = () => {
               className="form-control"
               id="phone"
               placeholder="Enter phone"
+              required
               onChange={contact_setinator}
             />
           </div>
@@ -70,6 +77,7 @@ const Add = () => {
               className="form-control"
               id="address"
               placeholder="Enter Address"
+              required
               onChange={contact_setinator}
             />
           </div>

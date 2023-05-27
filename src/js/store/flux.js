@@ -64,6 +64,21 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((result) => getActions().loadSomeData(result))
           .catch((error) => console.log("error", error));
       },
+
+	  contact_updatinator: (current_id,contact_info) => {
+		contact_info.agenda_slug = "diuca_agenda"; 
+        fetch(`https://assets.breatheco.de/apis/fake/contact/${current_id}`, {
+          method: "PUT",
+          body: JSON.stringify(contact_info),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((result) => console.log(result.ok))
+          .catch((error) => console.log("error", error));
+
+	  }
     },
   };
 };
