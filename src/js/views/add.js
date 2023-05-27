@@ -20,6 +20,8 @@ const Add = () => {
 
   if (store.current != null) {
     const current = store.current;
+    console.log("current");
+    console.log(current);
     return (
       <>
         <div className="mt-5 container ">
@@ -46,7 +48,7 @@ const Add = () => {
                 placeholder="Full Name"
                 required
                 onChange={contact_setinator}
-                defaultValue={params.id != 0 ? current.full_name : "asd"}
+                value={params.id != 0 ? store.current.full_name : "asd"}
               />
             </div>
             <div className="mb-3">

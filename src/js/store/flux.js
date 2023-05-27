@@ -86,9 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         })
           .then((response) => response.json())
-          .then((result) => {
-            console.log("current");
-            console.log(result);
+          .then((result) => {            
             setStore({ current: result });
           })
           .catch((error) => console.log("error", error));
