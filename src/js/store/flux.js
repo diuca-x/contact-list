@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       contacts: [],
+      current: [],
     },
 
     actions: {
@@ -12,8 +13,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         const store = getStore();
         setStore({ contacts: [...store["contacts"], contact_list] });
-        console.log("the store is");
-        console.log(store);
       },
 
       contact_adinator: (contact_info) => {
@@ -65,8 +64,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((error) => console.log("error", error));
       },
 
-	  contact_updatinator: (current_id,contact_info) => {
-		contact_info.agenda_slug = "diuca_agenda"; 
+      contact_updatinator: (current_id, contact_info) => {
+        contact_info.agenda_slug = "diuca_agenda";
         fetch(`https://assets.breatheco.de/apis/fake/contact/${current_id}`, {
           method: "PUT",
           body: JSON.stringify(contact_info),
@@ -77,8 +76,23 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => response.json())
           .then((result) => console.log(result.ok))
           .catch((error) => console.log("error", error));
+      },
 
-	  }
+      contact_current_getinator: (current_id) => {
+        fetch(`https://assets.breatheco.de/apis/fake/contact/${current_id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            console.log("current");
+            console.log(result);
+            setStore({ current: result });
+          })
+          .catch((error) => console.log("error", error));
+      },
     },
   };
 };

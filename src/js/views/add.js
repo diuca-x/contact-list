@@ -5,13 +5,22 @@ import { Context } from "../store/appContext";
 const Add = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
-
   const [info, setInfo] = useState({});
 
   const contact_setinator = (event) => {
     setInfo({ ...info, [event.target.id]: event.target.value });
     console.log(info);
   };
+  useEffect(() => {
+    if (params.id != 0) {
+      actions.contact_current_getinator(params.id);
+    }
+  }, []);
+  useEffect(() => {
+    let current = store.current;
+    console.log("currentinadd");
+    console.log(current);
+  }, [store.current]);
 
   return (
     <>
@@ -39,6 +48,11 @@ const Add = () => {
               placeholder="Full Name"
               required
               onChange={contact_setinator}
+              defaultValue={
+                params.id != 0 && typeof current !== "undefined"
+                  ? current.full_name
+                  : "asd"
+              }
             />
           </div>
           <div className="mb-3">
