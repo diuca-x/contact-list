@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Contact from "../component/contact";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
+ 
+  
 
   return (
     <>

@@ -32,7 +32,7 @@ const Contact = (props) => {
         </div>
         <div className="col-3  d-flex contact_delpen">
           <i className="fas fa-pencil-alt mx-5"></i>
-          <i className="fas fa-trash "></i>
+          <i className="fas fa-trash " onClick={() => {actions.contact_deletinator(contact_info.id)}}></i>
         </div>
       </div>
     </>

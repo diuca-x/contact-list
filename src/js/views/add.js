@@ -6,18 +6,24 @@ const Add = () => {
   const { store, actions } = useContext(Context);
 
   const [info, setInfo] = useState({});
-
+  
   const contact_setinator = (event) => {
-    setInfo({ ...info, [event.target.name]: event.target.value });
-    console.log(info);
+    setInfo({ ...info, [event.target.id]: event.target.value });
+    console.log(info)
   };
 
   return (
     <>
       <div className="mt-5 container ">
-        <form className="my-5">
+        <form
+          className="my-5"
+          onSubmit={(event) => {
+            event.preventDefault();
+            actions.contact_adinator(info);
+          }}
+        >
           <div className="mb-3">
-            <label htmlFor="full_name" className="form-label ">
+            <label htmlFor="full_name" className="form-label">
               Full Name
             </label>
             <input
@@ -26,7 +32,8 @@ const Add = () => {
               id="full_name"
               aria-describedby="namelHelp"
               placeholder="Full Name"
-              onChange={contact_setinator()}
+              onChange={contact_setinator}
+              
             />
           </div>
           <div className="mb-3">
