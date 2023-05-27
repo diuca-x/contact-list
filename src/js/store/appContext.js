@@ -31,6 +31,19 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
+			fetch("https://assets.breatheco.de/apis/fake/contact/agenda/diuca_agenda", {
+				method: "GET",
+				headers:{
+					'Content-Type': 'application/json'
+				  }
+			})
+			.then(response => response.json())
+			.then(result => state.actions.loadSomeData(result))
+			.catch(error => console.log('error', error));
+
+
+
+
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

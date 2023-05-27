@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 
-const Contact = () => {
+const Contact = (props) => {
+  const { contact_info } = props;
+  const { store, actions } = useContext(Context);
+
   return (
     <>
       <div className="row border my-2 rounded contact_container">
@@ -12,18 +16,18 @@ const Contact = () => {
           />
         </div>
         <div className="col-6 contact_info  ps-5 pt-2">
-          <h4 className="fw-normal">Mike Anamendolla</h4>
+          <h4 className="fw-normal">{contact_info.full_name}</h4>
           <p>
             <i className="fas fa-map-marker-alt me-3"></i>
-            any direction
+            {contact_info.address}
           </p>
           <p>
             <i className="fas fa-phone me-3"></i>
-            600600600
+            {contact_info.phone}
           </p>
           <p>
             <i className="fas fa-envelope me-3"></i>
-            something@gmail.com
+            {contact_info.email}
           </p>
         </div>
         <div className="col-3  d-flex contact_delpen">

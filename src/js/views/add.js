@@ -1,58 +1,72 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 const Add = () => {
+  const { store, actions } = useContext(Context);
+
+  const [info, setInfo] = useState({});
+
+  const contact_setinator = (event) => {
+    setInfo({ ...info, [event.target.name]: event.target.value });
+    console.log(info);
+  };
+
   return (
     <>
       <div className="mt-5 container ">
         <form className="my-5">
-          <div class="mb-3">
-            <label for="name" class="form-label ">
+          <div className="mb-3">
+            <label htmlFor="full_name" className="form-label ">
               Full Name
             </label>
             <input
               type="text"
-              class="form-control"
-              id="name"
+              className="form-control"
+              id="full_name"
               aria-describedby="namelHelp"
               placeholder="Full Name"
+              onChange={contact_setinator()}
             />
           </div>
-          <div class="mb-3">
-            <label for="Email1" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
               Email
             </label>
             <input
               type="email"
-              class="form-control"
-              id="Email1"
+              className="form-control"
+              id="email"
               aria-describedby="emailHelp"
               placeholder="Enter email"
+              onChange={contact_setinator}
             />
           </div>
-          <div class="mb-3">
-            <label for="phone" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="phone" className="form-label">
               Phone
             </label>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="phone"
               placeholder="Enter phone"
+              onChange={contact_setinator}
             />
           </div>
-          <div class="mb-3">
-            <label for="phone" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="address" className="form-label">
               Adress
             </label>
             <input
               type="text"
-              class="form-control"
-              id="adress"
-              placeholder="Enter Adress"
+              className="form-control"
+              id="address"
+              placeholder="Enter Address"
+              onChange={contact_setinator}
             />
           </div>
-          <button type="submit" class="btn btn-primary add_btn">
+          <button type="submit" className="btn btn-primary add_btn">
             Save
           </button>
           <Link to={"/"}>or get back to contacts</Link>
