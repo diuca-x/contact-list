@@ -21,7 +21,7 @@ const Add = () => {
 
   return (
     <>
-      <div className="mt-5 container ">
+      <div className="mt-5 container add_container">
         <form
           className="my-5"
           onSubmit={(event) => {
@@ -35,7 +35,7 @@ const Add = () => {
             }
           }}
         >
-          <div className="mb-3">
+          <div className="mb-3 ">
             <label htmlFor="full_name" className="form-label">
               Full Name
             </label>

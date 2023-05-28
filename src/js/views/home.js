@@ -5,12 +5,10 @@ import { Context } from "../store/appContext";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
- 
-  
 
   return (
     <>
-      <div className="text-center mt-5 container">
+      <div className="text-center mt-5 container home_container">
         {store.contacts[0]
           ? store.contacts[0].map((x, index) => {
               return <Contact contact_info={x} key={index} />;
