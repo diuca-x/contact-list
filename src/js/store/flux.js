@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				*/
 
         const store = getStore();
-        setStore({ contacts: [...store["contacts"], contact_list] });
+        setStore({ contacts: [contact_list] });
       },
 
       contact_adinator: (contact_info) => {
@@ -74,22 +74,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         })
           .then((response) => response.json())
-          .then((result) => console.log(result.ok))
+          .then((result) => getActions().contact_getinator())
           .catch((error) => console.log("error", error));
       },
 
       contact_current_getinator: (current_id) => {
-        fetch(`https://assets.breatheco.de/apis/fake/contact/${current_id}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((response) => response.json())
-          .then((result) => {            
-            setStore({ current: result });
+        if (current_id == 0) {
+          setStore({ current: {} });
+        } else {
+          fetch(`https://assets.breatheco.de/apis/fake/contact/${current_id}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
           })
-          .catch((error) => console.log("error", error));
+            .then((response) => response.json())
+            .then((result) => {
+              setStore({ current: result });
+            })
+            .catch((error) => console.log("error", error));
+        }
       },
     },
   };
