@@ -17,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       contact_adinator: (contact_info) => {
         contact_info.agenda_slug = "diuca_agenda";
-        fetch("https://assets.breatheco.de/apis/fake/contact", {
+        fetch("https://assets.breatheco.de/apis/fake/contact/", {
           method: "POST",
           body: JSON.stringify(contact_info),
           headers: {

@@ -4,8 +4,10 @@ body {
   min-height: 100vh;
   border: 10px solid red;
 }
-.footer_container {
-  margin-top: auto;
+#footer_container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .navbar_container {
