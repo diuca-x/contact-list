@@ -38,13 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         })
           .then((response) => response.text())
           .then((result) => {
-            const store = getStore();
-
-            let deleted_store = store.contacts[0].filter((x) => x.id != id);
-            console.log("deletedstore");
-            console.log(deleted_store);
-
-            setStore({ contacts: [deleted_store] });
+            getActions().contact_getinator();
           })
           .catch((error) => console.log("error", error));
       },

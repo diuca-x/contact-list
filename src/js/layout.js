@@ -22,7 +22,7 @@ const Layout = () => {
 						<Route path="/" element={<Home />} />	
 						<Route path="/add/:id" element= {<Add/>}/>
 					</Routes>
-					<Footer />
+					<Footer/>
 			</BrowserRouter>
 		</div>
 	);
